@@ -19,36 +19,10 @@ class GreetingsView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
-        setupGreetings()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    private func setupGreetings() {
-        let hour = Calendar.current.component(.hour, from: Date())
-        
-        switch hour {
-        case 0..<6:
-            greetingsLabel.text = "Ainda está acordado?"
-            greetingsLabel.textColor = .white
-            backgroundColor = .darkGray
-        case 6..<12:
-            greetingsLabel.text = "Bom Dia"
-            greetingsLabel.textColor = .black
-            backgroundColor = .yellow
-        case 12..<18:
-            greetingsLabel.text = "Boa Tarde"
-            greetingsLabel.textColor = .black
-            backgroundColor = .green
-        case 18..<24:
-            greetingsLabel.text = "Boa Noite"
-            greetingsLabel.textColor = .white
-            backgroundColor = .black
-        default:
-            break
-        }
     }
     
     private func setupView() {
@@ -58,5 +32,11 @@ class GreetingsView: UIView {
             greetingsLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
             greetingsLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
         ])
+    }
+    
+    func setup(greetings: String, backgroundColor: UIColor, textColor: UIColor = .black) {
+        greetingsLabel.text = greetings
+        greetingsLabel.textColor = textColor
+        self.backgroundColor = backgroundColor
     }
 }
