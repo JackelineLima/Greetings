@@ -52,7 +52,6 @@ class GreetingsView: UIView {
     }
     
     private func setupView() {
-        backgroundColor = .white
         addSubview(greetingsLabel)
         
         NSLayoutConstraint.activate([
